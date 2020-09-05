@@ -11,13 +11,14 @@ A pyramid of height 3 would look like:
 
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 
-
 def print_pyramid(rows):
     """Print a pyramid of a given height
 
     :param int rows: total height
     """
-    raise NotImplementedError("Called with rows={}".format(rows))
+    #raise NotImplementedError("Called with rows={}".format(rows))
+    for i in range(rows):
+        print('-'*(rows-i-1)+'='*(2*i+1)+'-'*(rows-i-1))
 
 
 if __name__ == "__main__":
@@ -27,4 +28,4 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--rows", default=10, help="Number of rows")
 
     args = parser.parse_args()
-    print_pyramid(args.rows)
+    print_pyramid(int(args.rows))
