@@ -9,12 +9,19 @@ def last_8(some_int):
     :rtype: int
     """
 
-    raise NotImplementedError()
-
+    #raise NotImplementedError()
+    input_num = str(some_int)
+    new_number = input_num[-8:]
+    return int(new_number)
 
 def optimized_fibonacci(f):
-    raise NotImplementedError()
-
+    #raise NotImplementedError()
+    fib = [0,1]
+    while len(fib) != f+1:
+        finish = fib[-1] + fib[-2]
+        fib.append(finish)
+    return_value = fib[-1]
+    return return_value
 
 class SummableSequence(object):
     def __init__(self, *initial):
@@ -25,7 +32,6 @@ class SummableSequence(object):
 
 
 if __name__ == "__main__":
-
     print("f(100000)[-8:]", last_8(optimized_fibonacci(100000)))
 
     new_seq = SummableSequence(5, 7, 11)
