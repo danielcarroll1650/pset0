@@ -25,11 +25,26 @@ def optimized_fibonacci(f):
 
 class SummableSequence(object):
     def __init__(self, *initial):
-        raise NotImplementedError()
+        #raise NotImplementedError()
+        self.initial = initial
+        self.counter = 100000
+        self.working_list = []
+        self.first_add = sum(self.initial) #21
+        self.working_list.append(self.first_add) #working_list = [5,7,9,21]
+        self.counter -= 4
 
     def __call__(self, i):
-        raise NotImplementedError()
+        #raise NotImplementedError()
 
+        for i in self.initial:
+            self.working_list.append(i) #[5,7,9]
+
+        while self.counter != 0:
+            self.working_list.pop(0) #working_list = [7,9,21]
+            additive = sum(self.working_list) #37
+            self.working_list.append(additive) #working_list = [7,9,21,37]
+            self.counter -= 1
+        return self.working_list[-1]
 
 if __name__ == "__main__":
     print("f(100000)[-8:]", last_8(optimized_fibonacci(100000)))
