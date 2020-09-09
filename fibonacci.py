@@ -36,7 +36,8 @@ class SummableSequence(object):
         self.counter = i - len(self.working_list)
         self.first_add = sum(self.initial) #23
         self.working_list.append(self.first_add) #working_list = [5,7,11,23]
-        self.counter -= 1 #Missing piece in answer key's code, will get correct answer if this is deleted
+        self.counter -= 1 #Missing piece in answer key's code
+        #you will get correct answer if this is deleted, answer will then be based on index rather than ith number in sequence
         
         while self.counter != 0:
             self.working_list.pop(0) #working_list = [7,11,23]
@@ -49,4 +50,4 @@ if __name__ == "__main__":
     print("f(100000)[-8:]", last_8(optimized_fibonacci(100000)))
 
     new_seq = SummableSequence(5, 7, 11)
-    print("new_seq(100000)[-8:]:", last_8(new_seq(4)))
+    print("new_seq(100000)[-8:]:", last_8(new_seq(100000)))
