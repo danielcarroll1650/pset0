@@ -27,17 +27,17 @@ class SummableSequence(object):
     def __init__(self, *initial):
         #raise NotImplementedError()
         self.initial = initial
-        self.counter = 100000 - 4
         self.working_list = []
-        self.first_add = sum(self.initial) #23
+        for i in self.initial:
+            self.working_list.append(i)
         
-
     def __call__(self, i):
         #raise NotImplementedError()
-        for i in self.initial:
-            self.working_list.append(i) #[5,7,11]
-
+        self.counter = i - len(self.working_list)
+        
+        self.first_add = sum(self.initial) #23
         self.working_list.append(self.first_add) #working_list = [5,7,11,23]
+        
         while self.counter != 0:
             self.working_list.pop(0) #working_list = [7,11,23]
             additive = sum(self.working_list) #37
