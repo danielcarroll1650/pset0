@@ -34,13 +34,13 @@ class SummableSequence(object):
     def __call__(self, i):
         #raise NotImplementedError()
         self.counter = i - len(self.working_list)
-        
         self.first_add = sum(self.initial) #23
         self.working_list.append(self.first_add) #working_list = [5,7,11,23]
+        self.counter -= 1 #Missing piece from professor's code
         
         while self.counter != 0:
             self.working_list.pop(0) #working_list = [7,11,23]
-            additive = sum(self.working_list) #37
+            additive = sum(self.working_list) #41
             self.working_list.append(additive) #working_list = [7,11,23,41]
             self.counter -= 1
         return self.working_list[-1]
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     print("f(100000)[-8:]", last_8(optimized_fibonacci(100000)))
 
     new_seq = SummableSequence(5, 7, 11)
-    print("new_seq(100000)[-8:]:", last_8(new_seq(100000)))
+    print("new_seq(100000)[-8:]:", last_8(new_seq(4)))
