@@ -16,12 +16,17 @@ def last_8(some_int):
 
 def optimized_fibonacci(f):
     #raise NotImplementedError()
-    fib = [0,1]
-    while len(fib) != f+1:
-        finish = fib[-1] + fib[-2]
-        fib.append(finish)
-    return_value = fib[-1]
-    return return_value
+    if f == 2:
+        return 1 
+    elif f == 1:
+        return 0 #Remember in case user selected an ith number less than 3
+    else:
+        fib = [0,1]
+        while len(fib) != f+1:
+            finish = fib[-1] + fib[-2]
+            fib.append(finish)
+        return_value = fib[-1]
+        return return_value
 
 class SummableSequence(object):
     def __init__(self, *initial):
@@ -36,7 +41,7 @@ class SummableSequence(object):
         self.counter = i - len(self.working_list)
         self.first_add = sum(self.initial) #23
         self.working_list.append(self.first_add) #working_list = [5,7,11,23]
-        self.counter -= 1 #Missing piece in answer key's code
+        #self.counter -= 1 #Missing piece in answer key's code
         #you will get correct answer if this is deleted, answer will then be based on index rather than ith number in sequence
         
         while self.counter != 0:
@@ -47,7 +52,7 @@ class SummableSequence(object):
         return self.working_list[-1]
 
 if __name__ == "__main__":
-    print("f(100000)[-8:]", last_8(optimized_fibonacci(100000)))
+    print("f(100000)[-8:]", last_8(optimized_fibonacci(3)))
 
     new_seq = SummableSequence(5, 7, 11)
-    print("new_seq(100000)[-8:]:", last_8(new_seq(100000)))
+    print("new_seq(100000)[-8:]:", last_8(new_seq(4)))
